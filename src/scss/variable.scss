@@ -1,0 +1,23 @@
+$px2rem-design-size: 750;
+$px2rem-enable: true;
+
+$black: #484848;
+$deepgray: #767676;
+$lightgray: #dbdbdb;
+$deepred: #ff4b40;
+$deepblue: #1fb0ff;
+$line:#f2f2f2;
+
+/*展示动画*/
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translate3d(100%, 0, 0);
+}
+
+

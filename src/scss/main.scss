@@ -1,0 +1,21 @@
+@charset "utf-8";
+@import 'mixin';
+
+* {
+  box-sizing: border-box;
+}
+body, html {
+  color: #484848;
+  background: #f7f9fb;
+  font-family: system-ui,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑";
+  line-height: 1.5;
+  font-size: 14px;
+  height: 100%;
+  .el-form {
+    width: 400px;
+  }
+}
+
+#app {
+  min-height: 100%;
+}

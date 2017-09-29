@@ -1,0 +1,13 @@
+@import 'variable';
+
+// @function px2rem($px) {
+//   @if $px2rem-enable {
+//     @if $px == 1px {
+//       @return $px;
+//     } @else {
+//       @return $px / $px2rem-design-size * 10rem;
+//     }
+//   } @else {
+//     @return $px;
+//   }
+// }

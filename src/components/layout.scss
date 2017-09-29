@@ -1,0 +1,72 @@
+.header {
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #373d41;
+  color: white;
+  z-index: 998;
+  &__title {
+    padding-left: 10px;
+    color: white;
+  }
+  &-nav {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    line-height: 50px;
+    &__avatar {
+      margin: 0 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    &__name {
+      margin: 0 10px;
+    }
+    &-item {
+      padding: 0 30px;
+      color: white;
+      &:hover {
+        background: #00C1DE;
+      }
+    }
+  }
+
+}
+.layout {
+  position: absolute;
+  width: 100%;
+  top: 50px;
+  bottom: 0;
+  background-color: #000;
+  z-index: 100;
+  &-menu {
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    z-index: 102;
+    overflow-x: hidden;
+    width: 150px;
+    .el-submenu__title {
+      height: 46px;
+      line-height: 46px;
+    }
+    .el-submenu .el-menu-item {
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+  &-main {
+    width: auto;
+    position: absolute;
+    top: 0;
+    left: 150px;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    background: #FFF;
+  }
+}
