@@ -93,7 +93,7 @@ app.get('*', (req, res) => {
           res.redirect(err.url);
           res.end();
         } else if(err.code === 404) {
-          res.status(404).send(html);
+          res.status(404).send('404 | Page Not Found');
         } else {
           // Render Error Page or Redirect
           res.status(500).send('500 | Internal Server Error');
