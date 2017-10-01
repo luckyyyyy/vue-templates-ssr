@@ -61,7 +61,6 @@ app.get('*', (req, res) => {
     title: 'Loading', // default title
     url: req.url,
     cookie: req.headers.cookie, // cookies 给应用
-    god: req.query.god,
   }
   renderer.renderToString(context, (err, html) => {
     if (err) {
@@ -76,6 +75,7 @@ app.get('*', (req, res) => {
         console.error(err.stack);
       }
     } else {
+      if (context.httpStatus) res.status(context.httpStatus);
       res.send(html);
     }
   })

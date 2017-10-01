@@ -6,7 +6,7 @@ import axios from 'axios';
 export default (context) => {
   return new Promise(async (resolve, reject) => {
     const { app, router, store } = createApp();
-    const { cookie, god } = context;
+    const { cookie } = context;
     let { url } = context;
     if (url.indexOf(ROUTER_BASE) === 0) {
       url = url.substr(ROUTER_BASE.length);
@@ -19,7 +19,7 @@ export default (context) => {
 
     let user;
     try {
-      user = await store.dispatch('user/GET_USER', god);
+      user = await store.dispatch('user/GET_USER');
     } catch (err) {
       // 用户未登录 接口返回401 所以会进catch
     }

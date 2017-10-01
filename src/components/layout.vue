@@ -1,19 +1,19 @@
 <template>
   <div class="app">
     <header class="header">
-      <h1 class="header__title">差评管理后台</h1>
+      <h1 class="header__title">运营平台</h1>
       <nav class="header-nav">
-        <img class="header-nav__avatar" src="https://tvax3.sinaimg.cn/crop.0.0.1242.1242.180/7ee06dc9ly8fildyyzrmfj20yi0yiwg3.jpg" alt="">
-        <span class="header-nav__name">青阳魂</span>
+        <img class="header-nav__avatar" :src="user.avatar">
+        <span class="header-nav__name">{{ user.nickname }}</span>
         <router-link class="header-nav-item" :to="{ name: 'logout' }">退出</router-link>
       </nav>
     </header>
-    <main class="layout">
+    <section class="layout">
       <el-menu class="layout-menu" @select="onSelect" :router="false" theme="dark" :default-active="active" mode="vertical" width="140px">
         <template v-for="item of sidebar">
           <template v-if="item.group">
             <el-menu-item-group :key="item.group">
-              <template slot="title">{{ item.group }}</template>
+              <span slot="title">{{ item.group }}</span>
               <template v-for="gitem of item.items">
                 <template v-if="gitem.sub">
                   <el-submenu :index="gitem.name" :key="gitem.name">
@@ -34,16 +34,19 @@
           <el-menu-item :key="item.name" :class="{ line: item.line }" v-else :index="item.name">{{ item.item }}</el-menu-item>
         </template>
       </el-menu>
-      <router-view class="layout-main"></router-view>
-    </main>
+      <router-view tag="section" class="layout-main"></router-view>
+    </section>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   data() {
     return {
       sidebar: [
+        { item: '首页', name: 'home' },
         {
           group: '差评',
           items: [
@@ -83,14 +86,13 @@ export default {
     };
   },
   computed: {
+    ...mapState('user', ['user']),
     active() {
-      // let active = this.$route.name;
-      // this.$route.matched.some((record) => {
-      //   if (record.meta.menu) {
-      //     active = record.meta.menu;
-      //   }
-      // });
-      return this.$route.name;
+      let active = this.$route.name;
+      active = this.$route.matched.reduceRight((preValue, item, index, array) => {
+        return item.meta.sidebar || preValue;
+      }, active);
+      return active;
     },
   },
   methods: {

@@ -8,7 +8,7 @@ export default [
       {
         path: '',
         name: 'home',
-        component: () => import('@/views/login'),
+        component: () => import('@/views/home/index'),
         meta: { requiresAuth: true },
       },
     ],

@@ -86,7 +86,6 @@ app.get('*', (req, res) => {
       title: 'Loading', // default title
       url: req.url,
       cookie: req.headers.cookie, // cookies 给应用
-      god: req.query.god,
     };
     renderer.renderToString(context, (err, html) => {
       if (err) {
@@ -94,7 +93,7 @@ app.get('*', (req, res) => {
           res.redirect(err.url);
           res.end();
         } else if(err.code === 404) {
-          res.status(404).send('404 | Page Not Found');
+          res.status(404).send(html);
         } else {
           // Render Error Page or Redirect
           res.status(500).send('500 | Internal Server Error');
@@ -102,6 +101,7 @@ app.get('*', (req, res) => {
           console.error(err.stack);
         }
       } else {
+        if (context.httpStatus) res.status(context.httpStatus);
         res.send(html);
         console.log(`whole request: ${Date.now() - s}ms`);
       }

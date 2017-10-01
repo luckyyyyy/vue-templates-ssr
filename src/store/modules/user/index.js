@@ -3,7 +3,7 @@ import * as api from '@/api/user';
 export default {
   namespaced: true,
   state: () => ({
-    user: [],
+    user: {},
   }),
   getters: {},
   actions: {
@@ -30,9 +30,6 @@ export default {
   },
   mutations: {
     GET_USER(state, data) {
-      state.user = data.data;
-    },
-    UPDATE_USER(state, data) {
       state.user = data.data;
     },
   },
