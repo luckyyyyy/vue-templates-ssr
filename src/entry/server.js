@@ -37,6 +37,7 @@ export default (context) => {
       if (!matchedComponents.length) {
         return reject({ code: 404 });
       }
+      setUserCookie(cookie); // 必须设置
       return Promise.all(matchedComponents.map(({ asyncData }) => asyncData && asyncData({
         store,
         route: router.currentRoute,

@@ -58,7 +58,7 @@ export const http = axios.create({
 });
 
 export const setUserCookie = (cookies) => {
-  cookie = cookies;
+  cookie = cookies || '';
   return http;
 };
 
